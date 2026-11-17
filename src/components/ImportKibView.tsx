@@ -379,44 +379,47 @@ export function ImportKibView({ onImportCompleted }: ImportKibViewProps) {
       </section>
 
       {/* Import Batch Log */}
-      <section className="bg-white rounded-xl border border-slate-200 p-6 space-y-4">
-        <div className="flex items-center gap-2">
-          <FileSpreadsheet className="h-4 w-4 text-slate-500" />
-          <h3 className="font-display text-base font-semibold text-slate-900">
+      <section className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-gradient-to-r from-[#0F172A] to-[#1E3A8A] px-6 py-4 flex items-center gap-2 text-white">
+          <FileSpreadsheet className="h-4 w-4 text-cyan-300" />
+          <h3 className="font-display text-base font-semibold text-white">
             Riwayat Batch Import KIB B
           </h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="border-b border-slate-200 text-[11px] font-semibold text-slate-500">
-                <th className="py-2.5 pr-4">Nama File</th>
-                <th className="py-2.5 px-3">Pengunggah</th>
-                <th className="py-2.5 px-3 text-right">Total</th>
-                <th className="py-2.5 px-3 text-right">Masuk</th>
-                <th className="py-2.5 px-3 text-right">Duplikat</th>
-                <th className="py-2.5 px-3 text-right">Error</th>
-                <th className="py-2.5 px-3">Status</th>
-                <th className="py-2.5 pl-3 text-right">Waktu</th>
+              <tr className="bg-slate-800 text-slate-100 border-b border-slate-700 text-[11px] font-semibold uppercase tracking-wider">
+                <th className="py-3 px-4">Nama File</th>
+                <th className="py-3 px-3">Pengunggah</th>
+                <th className="py-3 px-3 text-right">Total</th>
+                <th className="py-3 px-3 text-right">Masuk</th>
+                <th className="py-3 px-3 text-right">Duplikat</th>
+                <th className="py-3 px-3 text-right">Error</th>
+                <th className="py-3 px-3">Status</th>
+                <th className="py-3 px-4 text-right">Waktu</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-200/70">
               {batches.map((b) => (
-                <tr key={b.id}>
-                  <td className="py-3 pr-4 font-mono font-medium text-slate-900">{b.filename}</td>
+                <tr
+                  key={b.id}
+                  className="odd:bg-white even:bg-slate-50/80 hover:bg-blue-50/60 transition-colors"
+                >
+                  <td className="py-3 px-4 font-mono font-medium text-slate-900">{b.filename}</td>
                   <td className="py-3 px-3 text-slate-700">{b.imported_by_name}</td>
                   <td className="py-3 px-3 text-right font-mono tabular-nums">{b.total_rows}</td>
-                  <td className="py-3 px-3 text-right font-mono tabular-nums text-emerald-700">
+                  <td className="py-3 px-3 text-right font-mono tabular-nums text-emerald-700 font-semibold">
                     {b.inserted_rows}
                   </td>
-                  <td className="py-3 px-3 text-right font-mono tabular-nums text-amber-700">
+                  <td className="py-3 px-3 text-right font-mono tabular-nums text-amber-700 font-semibold">
                     {b.duplicate_rows}
                   </td>
-                  <td className="py-3 px-3 text-right font-mono tabular-nums text-red-700">
+                  <td className="py-3 px-3 text-right font-mono tabular-nums text-red-700 font-semibold">
                     {b.error_rows}
                   </td>
                   <td className="py-3 px-3 font-medium text-slate-800">{b.status}</td>
-                  <td className="py-3 pl-3 text-right font-mono text-[11px] text-slate-400 tabular-nums">
+                  <td className="py-3 px-4 text-right font-mono text-[11px] text-slate-400 tabular-nums">
                     {b.created_at}
                   </td>
                 </tr>

@@ -220,7 +220,15 @@ export function MasterAssetsView({
       </div>
 
       {/* Data Table */}
-      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-gradient-to-r from-[#0F172A] to-[#1E3A8A] px-5 py-3.5 flex items-center justify-between text-white">
+          <div className="text-sm font-display font-semibold">
+            Daftar Inventaris KIB B — Peralatan &amp; Mesin
+          </div>
+          <div className="font-mono text-xs text-cyan-200 tabular-nums">
+            {assets.length} aset
+          </div>
+        </div>
         {loading ? (
           <div className="p-8 text-center text-sm text-slate-500">Memuat data Master KIB B...</div>
         ) : assets.length === 0 ? (
@@ -234,7 +242,7 @@ export function MasterAssetsView({
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                <tr className="bg-slate-800 text-slate-100 border-b border-slate-700 text-[11px] font-semibold uppercase tracking-wider">
                   <th className="py-3 px-4">Asset ID & Register</th>
                   <th className="py-3 px-4">Nama Barang & Spesifikasi</th>
                   <th className="py-3 px-4">Lokasi Tercatat (KIB B)</th>
@@ -245,9 +253,12 @@ export function MasterAssetsView({
                   <th className="py-3 px-4 text-right">Aksi</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs">
+              <tbody className="divide-y divide-slate-200/70 text-xs">
                 {assets.map((asset) => (
-                  <tr key={asset.id} className="hover:bg-slate-50/80 transition-colors">
+                  <tr
+                    key={asset.id}
+                    className="odd:bg-white even:bg-slate-50/80 hover:bg-blue-50/60 transition-colors"
+                  >
                     <td className="py-3 px-4 align-top">
                       <div className="font-mono font-semibold text-slate-900">{asset.asset_id}</div>
                       <div className="font-mono text-[11px] text-slate-500">{asset.register_number}</div>

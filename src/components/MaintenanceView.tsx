@@ -127,7 +127,15 @@ export function MaintenanceView({
         )}
       </div>
 
-      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-gradient-to-r from-[#0F172A] to-[#1E3A8A] px-5 py-3.5 text-white flex items-center justify-between">
+          <div className="text-sm font-display font-semibold">
+            Daftar Tiket Pemeliharaan &amp; Perbaikan Aset
+          </div>
+          <div className="font-mono text-xs text-cyan-200 tabular-nums">
+            {tickets.length} tiket
+          </div>
+        </div>
         {loading ? (
           <div className="p-8 text-center text-sm text-slate-500">Memuat tiket pemeliharaan...</div>
         ) : tickets.length === 0 ? (
@@ -142,7 +150,7 @@ export function MaintenanceView({
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                <tr className="bg-slate-800 text-slate-100 border-b border-slate-700 text-[11px] font-semibold uppercase tracking-wider">
                   <th className="py-3 px-4">Kode Tiket</th>
                   <th className="py-3 px-4">Aset & Lokasi</th>
                   <th className="py-3 px-4">Deskripsi Masalah & Tindak Lanjut</th>
@@ -152,9 +160,12 @@ export function MaintenanceView({
                   {canManage && <th className="py-3 px-4 text-right">Aksi</th>}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-200/70">
                 {tickets.map((t) => (
-                  <tr key={t.id} className="hover:bg-slate-50/70">
+                  <tr
+                    key={t.id}
+                    className="odd:bg-white even:bg-slate-50/80 hover:bg-blue-50/60 transition-colors"
+                  >
                     <td className="py-3 px-4 align-top font-mono font-semibold text-slate-900">
                       {t.ticket_code}
                     </td>

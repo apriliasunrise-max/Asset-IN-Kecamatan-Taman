@@ -66,7 +66,16 @@ export function MonitoringHistoryView() {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-gradient-to-r from-[#0F172A] to-[#1E3A8A] px-5 py-3.5 text-white flex items-center justify-between">
+          <div className="text-sm font-display font-semibold">
+            {tab === 'discrepancy'
+              ? 'Daftar Selisih Lokasi Aktual vs Tercatat KIB B'
+              : tab === 'condition'
+              ? 'Daftar Perubahan Kondisi Fisik Aset'
+              : 'Rekam Jejak Audit Aktivitas Sistem'}
+          </div>
+        </div>
         {loading ? (
           <div className="p-8 text-center text-sm text-slate-500">Memuat riwayat monitoring...</div>
         ) : tab === 'discrepancy' ? (
@@ -78,7 +87,7 @@ export function MonitoringHistoryView() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                  <tr className="bg-slate-800 text-slate-100 border-b border-slate-700 text-[11px] font-semibold uppercase tracking-wider">
                     <th className="py-3 px-4">Aset KIB B</th>
                     <th className="py-3 px-4">Lokasi Tercatat (KIB B)</th>
                     <th className="py-3 px-4">Lokasi Aktual Lapangan</th>
@@ -87,9 +96,12 @@ export function MonitoringHistoryView() {
                     <th className="py-3 px-4 text-right">Tanggal</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-slate-200/70">
                   {locationDiscrepancies.map((d) => (
-                    <tr key={d.id}>
+                    <tr
+                      key={d.id}
+                      className="odd:bg-white even:bg-slate-50/80 hover:bg-blue-50/60 transition-colors"
+                    >
                       <td className="py-3 px-4">
                         <div className="font-mono font-semibold text-slate-900">{d.asset_code}</div>
                         <div className="font-medium text-slate-800">{d.asset_name}</div>
@@ -126,7 +138,7 @@ export function MonitoringHistoryView() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                  <tr className="bg-slate-800 text-slate-100 border-b border-slate-700 text-[11px] font-semibold uppercase tracking-wider">
                     <th className="py-3 px-4">Aset KIB B</th>
                     <th className="py-3 px-4">Kondisi KIB B Awal</th>
                     <th className="py-3 px-4">Kondisi Aktual Sensus</th>
@@ -134,9 +146,12 @@ export function MonitoringHistoryView() {
                     <th className="py-3 px-4">Verifikasi</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-slate-200/70">
                   {conditionChanges.map((c) => (
-                    <tr key={c.id}>
+                    <tr
+                      key={c.id}
+                      className="odd:bg-white even:bg-slate-50/80 hover:bg-blue-50/60 transition-colors"
+                    >
                       <td className="py-3 px-4">
                         <div className="font-mono font-semibold text-slate-900">{c.asset_code}</div>
                         <div className="font-medium text-slate-800">{c.asset_name}</div>
@@ -165,10 +180,10 @@ export function MonitoringHistoryView() {
             {auditLogs.map((log) => (
               <div
                 key={log.id}
-                className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs"
+                className="p-4 odd:bg-white even:bg-slate-50/70 hover:bg-blue-50/50 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs"
               >
                 <div className="flex items-start gap-3">
-                  <Activity className="h-4 w-4 text-slate-400 shrink-0 mt-0.5" />
+                  <Activity className="h-4 w-4 text-sky-600 shrink-0 mt-0.5" />
                   <div className="space-y-0.5">
                     <div className="font-medium text-slate-900">{log.summary}</div>
                     <div className="text-[11px] text-slate-500">

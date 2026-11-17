@@ -264,18 +264,18 @@ export function LocationsUsersView({
           <section
             className={`${
               canManageUsers ? 'lg:col-span-8' : 'lg:col-span-12'
-            } bg-white rounded-xl border border-slate-200 overflow-hidden`}
+            } bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden`}
           >
-            <div className="px-6 py-4 border-b border-slate-200 flex items-center gap-2">
-              <Users className="h-4 w-4 text-sky-700" />
-              <h3 className="font-display text-base font-semibold text-slate-900">
+            <div className="bg-gradient-to-r from-[#0F172A] to-[#1E3A8A] px-6 py-4 flex items-center gap-2 text-white">
+              <Users className="h-4 w-4 text-cyan-300" />
+              <h3 className="font-display text-base font-semibold text-white">
                 Daftar Akun Petugas & Pejabat
               </h3>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                  <tr className="bg-slate-800 text-slate-100 border-b border-slate-700 text-[11px] font-semibold uppercase tracking-wider">
                     <th className="py-3 px-4">Nama & NIP</th>
                     <th className="py-3 px-4">Peran (Role)</th>
                     <th className="py-3 px-4">Wilayah Tugas</th>
@@ -283,9 +283,12 @@ export function LocationsUsersView({
                     {canManageUsers && <th className="py-3 px-4 text-right">Aksi</th>}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-slate-200/70">
                   {users.map((u) => (
-                    <tr key={u.id}>
+                    <tr
+                      key={u.id}
+                      className="odd:bg-white even:bg-slate-50/80 hover:bg-blue-50/60 transition-colors"
+                    >
                       <td className="py-3 px-4">
                         <div className="font-semibold text-slate-900">{u.name}</div>
                         <div className="font-mono text-[11px] text-slate-500">

@@ -187,15 +187,15 @@ export function ReportsView({ locations }: ReportsViewProps) {
       </div>
 
       {/* Report Preview Table */}
-      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-gradient-to-r from-[#0F172A] to-[#1E3A8A] px-6 py-4 flex items-center justify-between text-white">
           <div>
-            <h3 className="font-display text-sm font-bold text-slate-900">
+            <h3 className="font-display text-sm font-bold text-white">
               {reportTitles[reportType]}
             </h3>
-            <div className="text-xs text-slate-500">{subtitle}</div>
+            <div className="text-xs text-slate-300">{subtitle}</div>
           </div>
-          <div className="font-mono text-xs text-slate-600 tabular-nums">
+          <div className="font-mono text-xs text-cyan-200 tabular-nums">
             {filteredRows.length} baris
           </div>
         </div>
@@ -210,7 +210,7 @@ export function ReportsView({ locations }: ReportsViewProps) {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500">
+                <tr className="bg-slate-800 text-slate-100 border-b border-slate-700 text-[11px] font-semibold uppercase tracking-wider">
                   <th className="py-3 px-4">Asset ID & Register</th>
                   <th className="py-3 px-4">Nama Barang</th>
                   <th className="py-3 px-4">Lokasi Tercatat</th>
@@ -220,9 +220,12 @@ export function ReportsView({ locations }: ReportsViewProps) {
                   <th className="py-3 px-4 text-right">Nilai KIB B</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-200/70">
                 {filteredRows.map((r) => (
-                  <tr key={r.id}>
+                  <tr
+                    key={r.id}
+                    className="odd:bg-white even:bg-slate-50/80 hover:bg-blue-50/60 transition-colors"
+                  >
                     <td className="py-2.5 px-4 font-mono">
                       <div className="font-semibold text-slate-900">{r.asset_id}</div>
                       <div className="text-[11px] text-slate-500">{r.register_number}</div>
