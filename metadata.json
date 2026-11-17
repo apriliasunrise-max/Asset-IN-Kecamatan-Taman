@@ -1,0 +1,6 @@
+{
+  "name": "ASSET-IN — Sistem Sensus Digital Aset Kecamatan Taman",
+  "description": "Sistem pendamping identifikasi, sensus fisik berbasis QR Code, verifikasi berjenjang, dan pemantauan Barang Milik Daerah (KIB B) di Kecamatan Taman dan 8 Kelurahan.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}
